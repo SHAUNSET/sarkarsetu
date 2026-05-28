@@ -6,22 +6,22 @@ SarkarSetu AI is a civic-tech platform designed to simplify access to Indian gov
 
 ---
 
-## ✨ Features
+## Features
 
 ### Implemented (Day 1)
-- 🏠 **Responsive Homepage UI** — Built with HTML & CSS, optimized for all screen sizes
-- 🗂️ **Category Sections** — Organized scheme discovery by category
-- 🔍 **Search Functionality** — Find schemes quickly and efficiently
-- 🤖 **AI Assistant Preview** — Sneak peek of the upcoming AI-powered guidance feature
-- 📰 **Updates Section** — Stay informed with the latest government announcements
-- 🔐 **User Authentication** — Secure signup, login, and logout via PHP & MySQL
-- 🛡️ **Session-Based Auth** — Protected routes with persistent login sessions
-- 📊 **User Dashboard** — Personalized, protected dashboard for logged-in users
-- 🗄️ **MySQL Database Integration** — Fully connected backend database
+-  **Responsive Homepage UI** — Built with HTML & CSS, optimized for all screen sizes
+-  **Category Sections** — Organized scheme discovery by category
+-  **Search Functionality** — Find schemes quickly and efficiently
+-  **AI Assistant Preview** — Sneak peek of the upcoming AI-powered guidance feature
+-  **Updates Section** — Stay informed with the latest government announcements
+-  **User Authentication** — Secure signup, login, and logout via PHP & MySQL
+-  **Session-Based Auth** — Protected routes with persistent login sessions
+-  **User Dashboard** — Personalized, protected dashboard for logged-in users
+-  **MySQL Database Integration** — Fully connected backend database
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Layer | Technology |
 |---|---|
@@ -32,14 +32,14 @@ SarkarSetu AI is a civic-tech platform designed to simplify access to Indian gov
 
 ---
 
-## 📅 Development Log
+## Development Log
 
 | Day | Milestone |
 |-----|-----------|
 | Day 1 | Responsive UI, User Authentication, MySQL Integration, GitHub Setup |
 
 
-## 🎯 Target Audience
+## Target Audience
 
 - **Indian Citizens** looking to discover and access government welfare schemes
 - **UPSC Aspirants** who want a simplified reference for schemes and policies
