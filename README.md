@@ -1,4 +1,4 @@
-# 🇮🇳 SarkarSetu AI
+# SarkarSetu AI
 
 > **Bridging Citizens with Government Schemes — Powered by AI**
 
