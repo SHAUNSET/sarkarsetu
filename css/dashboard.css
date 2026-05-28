@@ -1,0 +1,127 @@
+body{
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f9;
+}
+
+/* NAVBAR */
+
+.dashboard-navbar{
+    background-color: #0d1b2a;
+
+    color: white;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 18px 50px;
+}
+
+.dashboard-navbar h2{
+    margin: 0;
+}
+
+.dashboard-navbar nav{
+    display: flex;
+
+    gap: 20px;
+}
+
+.dashboard-navbar nav a{
+    color: white;
+
+    text-decoration: none;
+
+    transition: 0.3s;
+}
+
+.dashboard-navbar nav a:hover{
+    color: #64b5f6;
+}
+
+/* MAIN */
+
+.dashboard-main{
+    max-width: 1200px;
+
+    margin: auto;
+
+    padding: 40px 30px;
+}
+
+/* WELCOME */
+
+.welcome-box{
+    background: linear-gradient(to right, #102a43, #1b6ca8);
+
+    color: white;
+
+    padding: 35px;
+
+    border-radius: 18px;
+
+    margin-bottom: 40px;
+}
+
+.welcome-box h1{
+    margin-top: 0;
+}
+
+/* SECTIONS */
+
+.dashboard-section{
+    margin-bottom: 35px;
+}
+
+.dashboard-section h2{
+    color: #0d1b2a;
+
+    margin-bottom: 15px;
+}
+
+/* CARDS */
+
+.dashboard-card{
+    background-color: white;
+
+    padding: 30px;
+
+    border-radius: 16px;
+
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.08);
+
+    color: #555;
+
+    line-height: 1.7;
+}
+
+/* MOBILE */
+
+@media(max-width: 768px){
+
+    .dashboard-navbar{
+        flex-direction: column;
+
+        gap: 15px;
+
+        text-align: center;
+
+        padding: 20px;
+    }
+
+    .dashboard-navbar nav{
+        flex-wrap: wrap;
+
+        justify-content: center;
+    }
+
+    .dashboard-main{
+        padding: 20px;
+    }
+
+    .welcome-box{
+        padding: 25px;
+    }
+
+}
