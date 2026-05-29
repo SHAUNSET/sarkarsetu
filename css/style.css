@@ -376,6 +376,8 @@ button:hover{
     border-radius: 14px;
 
     box-shadow: 0px 4px 12px rgba(0,0,0,0.08);
+
+    overflow: visible;
 }
 
 .search-box input{
@@ -507,4 +509,65 @@ button:hover{
 
 .update-card p{
     font-size: 16px;
+}
+
+/* SEARCH SUGGESTIONS */
+
+
+.search-input-wrapper {
+    position: relative;
+    flex: 1;
+    display: flex; /* Ensures inner inputs span correctly */
+    flex-direction: column;
+}
+
+#suggestions{
+    position: absolute;
+
+    top: 100%;
+    left: 0;
+
+    width: 100%;
+
+    background: white;
+
+    border-radius: 10px;
+
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+
+    z-index: 9999;
+
+    overflow: hidden;
+
+    display: none;
+
+    margin-top: 6px;
+
+    border: 1px solid #eee;
+}
+
+/* each item */
+
+.suggestion-item{
+    padding: 12px 15px;
+
+    cursor: pointer;
+
+    border-bottom: 1px solid #eee;
+
+    transition: 0.2s;
+
+    background: white;
+
+    color: #0d1b2a;
+
+    font-size: 15px;
+}
+
+.suggestion-item:last-child{
+    border-bottom: none;
+}
+
+.suggestion-item:hover{
+    background-color: #eef5ff;
 }

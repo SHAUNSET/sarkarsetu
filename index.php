@@ -21,7 +21,7 @@ session_start();
 
         <nav>
             <a href="#">Home</a>
-            <a href="#">Schemes</a>
+            <a href="schemes.php">Schemes</a>
             <a href="#">PIB Updates</a>
             <?php if(isset($_SESSION['user_id'])){ ?>
 
@@ -63,9 +63,11 @@ session_start();
             government schemes in simple language with personalized recommendations.
         </p>
 
-        <button>
-            Explore Schemes
-        </button>
+        <a href="schemes.php">
+    <button>
+        Explore Schemes
+    </button>
+</a>
 
     </div>
 
@@ -127,18 +129,27 @@ session_start();
         Find Schemes
     </h2>
 
-    <div class="search-box">
+    <form class="search-box" action="schemes.php" method="GET">
 
-        <input 
-            type="text"
-            placeholder="Search schemes, ministries, categories..."
-        >
+        <div class="search-input-wrapper">
 
-        <button>
+            <input 
+                type="text"
+                id="searchInput"
+                name="search"
+                placeholder="Search schemes, ministries, categories..."
+                autocomplete="off"
+            >
+
+            <div id="suggestions"></div>
+
+        </div>
+
+        <button type="submit">
             Search
         </button>
 
-    </div>
+    </form>
 
 </section>
 
@@ -276,6 +287,80 @@ session_start();
         </section>
 
     </main>
+
+
+    <script>
+
+const input = document.getElementById("searchInput");
+const suggestions = document.getElementById("suggestions");
+
+input.addEventListener("input", function(){
+
+    const query = input.value;
+
+    // empty input
+    if(query.length === 0){
+        suggestions.innerHTML = "";
+        suggestions.style.display = "none";
+        return;
+    }
+
+    fetch("suggestions.php?q=" + query)
+
+    .then(response => response.json())
+
+    .then(data => {
+
+        suggestions.innerHTML = "";
+
+        // no data found
+        if(data.length === 0){
+            suggestions.style.display = "none";
+            return;
+        }
+
+        suggestions.style.display = "block";
+
+        data.forEach(item => {
+    suggestions.innerHTML += `
+        <div class="suggestion-item">
+            ${item}
+        </div>
+    `;
+});
+
+        // click suggestion
+        document.querySelectorAll(".suggestion-item")
+        .forEach(element => {
+
+            element.addEventListener("click", function(){
+
+                input.value = this.innerText;
+
+                suggestions.innerHTML = "";
+
+                suggestions.style.display = "none";
+
+            });
+
+        });
+
+    });
+
+});
+
+// hide dropdown when clicking outside
+document.addEventListener("click", function(e){
+
+    if(!e.target.closest(".search-box")){
+        suggestions.innerHTML = "";
+        suggestions.style.display = "none";
+    }
+
+});
+
+</script>
+    
 
 </body>
 </html>
