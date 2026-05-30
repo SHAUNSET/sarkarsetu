@@ -140,15 +140,23 @@ $profile = mysqli_fetch_assoc($profile_query);
                             required
                         >
 
-                        <label>Occupation</label>
+                        <label>Gender</label>
+<select name="gender" required>
+    <option value="">Select</option>
+    <option value="Male">Male</option>
+    <option value="Female">Female</option>
+    <option value="Other">Other</option>
+</select>
 
-                        <select name="occupation" required>
-                            <option value="">Select</option>
-                            <option value="Student">Student</option>
-                            <option value="Farmer">Farmer</option>
-                            <option value="Employee">Employee</option>
-                            <option value="Business">Business</option>
-                        </select>
+                        <label>Occupation</label>
+<select name="occupation" required>
+    <option value="">Select</option>
+    <option value="Student">Student</option>
+    <option value="Farmer">Farmer</option>
+    <option value="Teacher">Teacher</option> <option value="Employee">Employee</option>
+    <option value="Business">Business</option>
+    <option value="Homemaker">Homemaker</option> </select>
+
 
                         <label>Income</label>
 
@@ -182,31 +190,45 @@ $profile = mysqli_fetch_assoc($profile_query);
 
             <!-- RECOMMENDATIONS -->
 
-            <section class="dashboard-section">
+<section class="dashboard-section">
+    <h2>Recommended Schemes</h2>
+    <div class="dashboard-card">
+<?php
+if($profile){
+    // Sanitize variables
+    $occ = mysqli_real_escape_string($conn, $profile['occupation']);
+    $inc = mysqli_real_escape_string($conn, $profile['income']);
+    $state = mysqli_real_escape_string($conn, $profile['state']);
+    $gen = mysqli_real_escape_string($conn, $profile['gender']);
 
-                <h2>
-                    Recommended Schemes
-                </h2>
+    // The Scoring Engine: Assigns points for every match
+    $sql = "SELECT *, 
+            ((CASE WHEN (category LIKE '%$occ%' OR description LIKE '%$occ%') THEN 5 ELSE 0 END) +
+             (CASE WHEN income_level = '$inc' THEN 3 ELSE 0 END) +
+             (CASE WHEN (description LIKE '%$state%' OR description LIKE '%All India%') THEN 2 ELSE 0 END) +
+             (CASE WHEN (description LIKE '%$gen%' OR description LIKE '%General%') THEN 1 ELSE 0 END)) AS match_score
+            FROM schemes 
+            HAVING match_score > 0
+            ORDER BY match_score DESC 
+            LIMIT 10";
+            
+    $rec_query = mysqli_query($conn, $sql);
 
-                <div class="dashboard-card">
-
-                    <?php
-
-                    if($profile){
-
-                        echo "Personalized recommendations coming next.";
-
-                    }else{
-
-                        echo "Complete your profile to get recommendations.";
-
-                    }
-
-                    ?>
-
-                </div>
-
-            </section>
+    if(mysqli_num_rows($rec_query) > 0) {
+        while($rec = mysqli_fetch_assoc($rec_query)) {
+            echo "<div style='margin-bottom:15px; border-bottom:1px solid #ddd; padding-bottom:10px;'>";
+            echo "<strong>" . htmlspecialchars($rec['title']) . "</strong> (Score: " . $rec['match_score'] . ")<br>";
+            echo "<small>" . htmlspecialchars(substr($rec['description'], 0, 80)) . "...</small><br>";
+            echo "<a href='scheme_details.php?id=" . $rec['id'] . "' style='color:blue;'>View Details</a>";
+            echo "</div>";
+        }
+    } else {
+        echo "No specific matches found.";
+    }
+}
+?>
+    </div>
+</section>
 
             <!-- SAVED -->
 

@@ -98,6 +98,17 @@ $total_pages = max(1, ceil($total_results / $results_per_page));
         .search-box { display: flex; gap: 10px; justify-content: center; margin: 25px auto; max-width: 600px; }
         .search-box input { flex: 1; padding: 12px; border-radius: 8px; border: 1px solid #ccc; }
         .search-box button { padding: 12px 18px; background: #1b6ca8; color: white; border: none; border-radius: 8px; cursor: pointer; }
+
+        .view-btn {
+    text-decoration: none;
+    background: #27ae60; /* A distinct 'action' color */
+    color: white;
+    padding: 10px 15px;
+    border-radius: 6px;
+    display: inline-block;
+    transition: background 0.3s;
+}
+.view-btn:hover { background: #219150; }
     </style>
 </head>
 <body>
@@ -130,7 +141,12 @@ $total_pages = max(1, ceil($total_results / $results_per_page));
                     <p><b>Category:</b> <?php echo highlight($row['category'], $search); ?></p>
                     <p><?php echo highlight($row['description'], $search); ?></p>
                     <p><b>Eligibility:</b> <?php echo highlight($row['eligibility'], $search); ?></p>
-                    <p><b>Ministry:</b> <?php echo highlight($row['ministry'], $search); ?></p>
+                </div>
+                
+                <div style="margin-top: 20px;">
+                    <a href="auth/scheme_details.php?id=<?php echo $row['id']; ?>" class="view-btn">
+                        Ask AI
+                    </a>
                 </div>
             </div>
         <?php endwhile; ?>
@@ -144,7 +160,9 @@ $total_pages = max(1, ceil($total_results / $results_per_page));
         if($page > 1): ?>
             <a href="?<?php echo $query_string; ?>&page=<?php echo $page - 1; ?>">« Prev</a>
         <?php endif; ?>
+        
         <span style="margin: 0 15px;">Page <?php echo $page; ?> of <?php echo $total_pages; ?></span>
+        
         <?php if($page < $total_pages): ?>
             <a href="?<?php echo $query_string; ?>&page=<?php echo $page + 1; ?>">Next »</a>
         <?php endif; ?>
