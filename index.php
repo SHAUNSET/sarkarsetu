@@ -87,39 +87,27 @@ session_start();
         Explore By Category
     </h2>
 
-    <div class="category-grid">
+<div class="category-grid">
+    <a href="schemes.php?cat=Education" class="category-card">
+        🎓
+        <h3>Education</h3>
+    </a>
 
-        <div class="category-card">
-            🎓
-            <h3>Education</h3>
-        </div>
+    <a href="schemes.php?cat=Farmers" class="category-card">
+        🌾
+        <h3>Farmers</h3>
+    </a>
 
-        <div class="category-card">
-            🌾
-            <h3>Farmers</h3>
-        </div>
+    <a href="schemes.php?cat=Healthcare" class="category-card">
+        🏥
+        <h3>Healthcare</h3>
+    </a>
 
-        <div class="category-card">
-            🏥
-            <h3>Healthcare</h3>
-        </div>
-
-        <div class="category-card">
-            👩
-            <h3>Women</h3>
-        </div>
-
-        <div class="category-card">
-            💼
-            <h3>Employment</h3>
-        </div>
-
-        <div class="category-card">
-            🚀
-            <h3>Startups</h3>
-        </div>
-
-    </div>
+    <a href="schemes.php?cat=Women" class="category-card">
+        👩
+        <h3>Women</h3>
+    </a>
+</div>
 
 </section>
 
