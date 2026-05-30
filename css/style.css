@@ -521,53 +521,29 @@ button:hover{
     flex-direction: column;
 }
 
-#suggestions{
+#suggestions {
     position: absolute;
-
-    top: 100%;
-    left: 0;
-
-    width: 100%;
-
     background: white;
-
-    border-radius: 10px;
-
-    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
-
-    z-index: 9999;
-
-    overflow: hidden;
-
-    display: none;
-
-    margin-top: 6px;
-
-    border: 1px solid #eee;
+    width: 100%;
+    border: 1px solid #ddd;
+    border-top: none;
+    z-index: 1000;
+    max-height: 200px;
+    overflow-y: auto;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
-/* each item */
-
-.suggestion-item{
-    padding: 12px 15px;
-
+.suggestion-item {
+    padding: 10px;
     cursor: pointer;
+}
 
-    border-bottom: 1px solid #eee;
-
-    transition: 0.2s;
-
-    background: white;
-
-    color: #0d1b2a;
-
-    font-size: 15px;
+.suggestion-item:hover {
+    background-color: #f4f4f4;
 }
 
 .suggestion-item:last-child{
     border-bottom: none;
 }
 
-.suggestion-item:hover{
-    background-color: #eef5ff;
-}
