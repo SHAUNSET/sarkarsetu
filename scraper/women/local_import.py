@@ -2,7 +2,7 @@ import json
 import mysql.connector
 import os
 
-DB_CONFIG = {'host': 'localhost', 'user': 'root', 'password': 'Suchet1234567', 'database': 'sarkarsetu'}
+DB_CONFIG = {'host': 'localhost', 'user': 'root', 'password': '', 'database': 'sarkarsetu'}
 
 def import_women():
     script_dir = os.path.dirname(os.path.abspath(__file__))
