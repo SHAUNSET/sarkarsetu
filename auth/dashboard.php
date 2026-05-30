@@ -4,7 +4,19 @@ session_start();
 
 if(!isset($_SESSION['user_id'])){
     header("Location: login.php");
+    exit();
 }
+
+include("../includes/config.php");
+
+$user_id = $_SESSION['user_id'];
+
+$profile_query = mysqli_query(
+    $conn,
+    "SELECT * FROM user_profiles WHERE user_id='$user_id'"
+);
+
+$profile = mysqli_fetch_assoc($profile_query);
 
 ?>
 
@@ -61,20 +73,108 @@ if(!isset($_SESSION['user_id'])){
 
             </div>
 
-            <!-- PROFILE STATUS -->
+            <!-- PROFILE -->
 
             <section class="dashboard-section">
 
                 <h2>
-                    Profile Completion
+                    Profile Information
                 </h2>
 
                 <div class="dashboard-card">
 
-                    Your profile is incomplete.
+                <?php if($profile){ ?>
 
-                    Add details like age, occupation, income and location
-                    for AI-powered recommendations.
+                    <div class="profile-details">
+
+                        <p>
+                            <strong>Age:</strong>
+                            <?php echo $profile['age']; ?>
+                        </p>
+
+                        <p>
+                            <strong>State:</strong>
+                            <?php echo $profile['state']; ?>
+                        </p>
+
+                        <p>
+                            <strong>Occupation:</strong>
+                            <?php echo $profile['occupation']; ?>
+                        </p>
+
+                        <p>
+                            <strong>Income:</strong>
+                            <?php echo $profile['income']; ?>
+                        </p>
+
+                        <p>
+                            <strong>Education:</strong>
+                            <?php echo $profile['education']; ?>
+                        </p>
+
+                        <p>
+                            <strong>Status:</strong>
+                            ✅ Profile Completed
+                        </p>
+
+                    </div>
+
+                <?php } else { ?>
+
+                    <form action="save_profile.php" method="POST">
+
+                        <label>Age</label>
+
+                        <input
+                            type="number"
+                            name="age"
+                            required
+                        >
+
+                        <label>State</label>
+
+                        <input
+                            type="text"
+                            name="state"
+                            placeholder="Maharashtra"
+                            required
+                        >
+
+                        <label>Occupation</label>
+
+                        <select name="occupation" required>
+                            <option value="">Select</option>
+                            <option value="Student">Student</option>
+                            <option value="Farmer">Farmer</option>
+                            <option value="Employee">Employee</option>
+                            <option value="Business">Business</option>
+                        </select>
+
+                        <label>Income</label>
+
+                        <select name="income" required>
+                            <option value="">Select</option>
+                            <option value="Below 2 Lakh">Below 2 Lakh</option>
+                            <option value="2-5 Lakh">2-5 Lakh</option>
+                            <option value="5-10 Lakh">5-10 Lakh</option>
+                            <option value="Above 10 Lakh">Above 10 Lakh</option>
+                        </select>
+
+                        <label>Education</label>
+
+                        <input
+                            type="text"
+                            name="education"
+                            placeholder="Engineering"
+                        >
+
+                        <button type="submit">
+                            Save Profile
+                        </button>
+
+                    </form>
+
+                <?php } ?>
 
                 </div>
 
@@ -90,7 +190,19 @@ if(!isset($_SESSION['user_id'])){
 
                 <div class="dashboard-card">
 
-                    Personalized recommendations will appear here.
+                    <?php
+
+                    if($profile){
+
+                        echo "Personalized recommendations coming next.";
+
+                    }else{
+
+                        echo "Complete your profile to get recommendations.";
+
+                    }
+
+                    ?>
 
                 </div>
 

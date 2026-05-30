@@ -125,3 +125,90 @@ body{
     }
 
 }
+
+
+/* PROFILE FORM */
+
+.dashboard-card form{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.dashboard-card label{
+    font-weight: 600;
+    color: #0d1b2a;
+    margin-top: 8px;
+}
+
+.dashboard-card input,
+.dashboard-card select{
+    padding: 12px;
+    border: 1px solid #d6dce5;
+    border-radius: 8px;
+    font-size: 15px;
+    outline: none;
+    transition: 0.3s;
+}
+
+.dashboard-card input:focus,
+.dashboard-card select:focus{
+    border-color: #1b6ca8;
+    box-shadow: 0 0 0 3px rgba(27,108,168,0.12);
+}
+
+.dashboard-card button{
+    background-color: #1b6ca8;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+    transition: 0.3s;
+
+    width: fit-content;
+
+    /* reduced space above button */
+    margin-top: 20px;
+}
+
+.dashboard-card button:hover{
+    background-color: #14507d;
+    transform: translateY(-2px);
+}
+
+
+/* PROFILE DETAILS */
+
+.profile-details{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.profile-details p{
+    margin: 0;
+    padding: 12px 15px;
+    background: #f8fafc;
+    border-radius: 8px;
+    border-left: 4px solid #1b6ca8;
+    color: #333;
+}
+
+.profile-details strong{
+    color: #0d1b2a;
+}
+
+/* STATUS BADGE */
+
+.profile-status{
+    display: inline-block;
+    margin-top: 10px;
+    background: #d1fae5;
+    color: #065f46;
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-weight: 600;
+}
