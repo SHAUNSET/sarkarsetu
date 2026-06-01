@@ -142,33 +142,16 @@ session_start();
 </section>
 
 <section class="ai-section">
-
     <div class="ai-box">
-
-        <h2 class="section-title">
-            Ask SarkarSetu AI
-        </h2>
-
-        <p>
-            Example:
-            "I am a college student from Goa. What scholarships can I apply for?"
-        </p>
-
+        <h2 class="section-title">Ask SarkarSetu AI</h2>
         <div class="ai-input-box">
-
-            <input 
-                type="text"
-                placeholder="Ask about schemes, eligibility, PIB updates..."
-            >
-
-            <button>
-                Ask AI
-            </button>
-
+            <input type="text" id="ai-query" placeholder="Ask about schemes, eligibility, PIB updates...">
+            <button onclick="askSarkarSetu()">Ask AI</button>
         </div>
-
+        <div id="ai-response" style="margin-top: 20px; padding: 15px; background: #fff; border-radius: 8px; border-left: 4px solid #1b6ca8;">
+            AI response will appear here...
+        </div>
     </div>
-
 </section>
 
 <section class="updates-section">
@@ -346,6 +329,24 @@ document.addEventListener("click", function(e){
     }
 
 });
+
+function askSarkarSetu() {
+    const query = document.getElementById("ai-query").value;
+    const responseDiv = document.getElementById("ai-response");
+    
+    if(!query) { alert("Please enter a question."); return; }
+    
+    responseDiv.innerHTML = "SarkarSetu AI is analyzing...";
+    
+    fetch('ask_ai.php', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+        body: 'query=' + encodeURIComponent(query)
+    })
+    .then(res => res.text())
+    .then(data => { responseDiv.innerHTML = data; })
+    .catch(err => { responseDiv.innerHTML = "Sorry, connection failed."; });
+}
 
 </script>
     

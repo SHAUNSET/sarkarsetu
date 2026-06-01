@@ -36,8 +36,8 @@ $prompt = "You are a helpful assistant for the 'SarkarSetu' government portal.
            - Use bullet points for readability.
            - Keep the tone helpful and encouraging.";
 
-// 4. API Request
-$url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent?key=" . $apiKey;
+// 4. API Request (Gemini)
+$url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=" . $apiKey;
 $data = [
     "contents" => [["parts" => [["text" => $prompt]]]]
 ];
@@ -52,7 +52,7 @@ $response = curl_exec($ch);
 $error = curl_error($ch);
 curl_close($ch);
 
-// 5. Handle Results
+// 5. Handle Results (Gemini Response Structure)
 if ($response === false) {
     echo "Connection Error: " . $error;
 } else {
