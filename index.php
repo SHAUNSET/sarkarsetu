@@ -154,64 +154,34 @@ session_start();
     </div>
 </section>
 
+<!-- Move your PHP block inside this section -->
 <section class="updates-section">
-
-    <h2 class="section-title">
-        Latest Government Updates
-    </h2>
-
+    <h2 class="section-title">Latest Government Updates</h2>
+    
     <div class="updates-grid">
-
-        <div class="update-card">
-
-            <span class="update-tag">
-                PIB
-            </span>
-
-            <h3>
-                New Skill Development Initiative Announced
-            </h3>
-
-            <p>
-                Government launches AI-focused skilling program for students and young professionals.
-            </p>
-
-        </div>
-
-        <div class="update-card">
-
-            <span class="update-tag">
-                Agriculture
-            </span>
-
-            <h3>
-                Farmer Subsidy Applications Open
-            </h3>
-
-            <p>
-                Farmers can now apply online for equipment and irrigation support schemes.
-            </p>
-
-        </div>
-
-        <div class="update-card">
-
-            <span class="update-tag">
-                Education
-            </span>
-
-            <h3>
-                Scholarship Portal Updated
-            </h3>
-
-            <p>
-                New central scholarships added for undergraduate and postgraduate students.
-            </p>
-
-        </div>
-
+        <?php
+        include("fetch_pib.php");
+        $xml = @simplexml_load_file("pib_cache.xml");
+        
+        if ($xml && isset($xml->channel->item)) {
+            $count = 0;
+            foreach ($xml->channel->item as $item) {
+                if ($count >= 3) break;
+                ?>
+                <div class="update-card">
+                    <span class="update-tag">PIB Update</span>
+                    <h3><?php echo htmlspecialchars((string)$item->title); ?></h3>
+                    <p><?php echo substr(strip_tags((string)$item->description), 0, 100); ?>...</p>
+                    <a href="<?php echo $item->link; ?>" target="_blank">Read More</a>
+                </div>
+                <?php
+                $count++;
+            }
+        } else {
+            echo "<p>Updates are currently being refreshed.</p>";
+        }
+        ?>
     </div>
-
 </section>
 
         <section class="features-section">
