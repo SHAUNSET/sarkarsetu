@@ -22,7 +22,7 @@ session_start();
         <nav>
             <a href="#">Home</a>
             <a href="schemes.php">Schemes</a>
-            <a href="#">PIB Updates</a>
+            <a href="daily_sync.php">Daily Goals</a>
             <?php if(isset($_SESSION['user_id'])){ ?>
 
     <a href="auth/dashboard.php">
