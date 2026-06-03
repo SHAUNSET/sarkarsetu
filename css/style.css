@@ -59,33 +59,32 @@ main{
 
 /* HERO SECTION */
 
-.hero{
+.hero {
     display: flex;
-    justify-content: space-between;
+    flex-direction: row; /* Side-by-side on desktop */
     align-items: center;
-
-    gap: 30px;
-
-    min-height: 48vh;
-
-    flex-wrap: wrap;
+    justify-content: center;
+    padding: 60px 20px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 40px;
 }
 
-.hero-text{
+.hero-text {
     flex: 1;
-    min-width: 320px;
+    text-align: left; /* Keep text aligned left on desktop */
 }
 
-.hero-image{
+.hero-image {
     flex: 1;
-
     display: flex;
     justify-content: center;
 }
 
-.hero-image img{
-    width: 100%;
-    max-width: 180px;
+.hero-image img {
+    max-width: 100%;
+    height: auto;
 }
 
 /* TYPOGRAPHY */
@@ -260,24 +259,31 @@ button:hover{
         padding: 20px;
     }
 
-    .hero{
-        flex-direction: column-reverse;
-
-        justify-content: center;
-
+.hero {
+        flex-direction: column-reverse; /* Image on top, text below on mobile */
         text-align: center;
-
-        min-height: 72vh;
-
-        gap: 0;
+        padding: 30px 20px;
+        gap: 20px;
     }
-
-    .hero-text{
+    
+    .hero-text {
+        text-align: center; /* Center text on mobile */
         min-width: auto;
+        width: 100%;
     }
-
-    .hero-image img{
-        max-width: 85px;
+    
+    .hero-image {
+        /* This keeps the image centered and prevents it from being too big */
+        padding: 10px;
+        margin-bottom: 20px;
+    }
+    
+    .hero-image img {
+        /* Set a fixed maximum width so it doesn't span 100% of the screen */
+        max-width: 120px !important; 
+        height: auto;
+        display: block;
+        margin: 0 auto;
     }
 
     h2{

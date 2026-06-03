@@ -1,6 +1,10 @@
-PM Kisan
-Solar Pump
-Agriculture Infrastructure
-Digital India
-Rural Employment
-Skill Development
+Infrastructure
+Digital
+Health
+Agriculture
+Skill
+Women
+Education
+Rural
+Finance
+Employment
