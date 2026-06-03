@@ -14,7 +14,7 @@ $host = getenv('MYSQLHOST');
 $user = getenv('MYSQLUSER');
 $password = getenv('MYSQLPASSWORD');
 $database = getenv('MYSQLDATABASE');
-$port = getenv('MYSQLPORT');
+$port = (int)getenv('MYSQLPORT');
 
 // Check if credentials are loaded
 if (!$host || !$user || !$password || !$database) {
