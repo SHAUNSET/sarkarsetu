@@ -1,4 +1,8 @@
 <?php
+
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
 // 1. Function to load .env file manually (No Composer required)
 function loadEnv($path) {
     if (!file_exists($path)) return;
