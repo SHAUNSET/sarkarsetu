@@ -10,18 +10,17 @@ function loadEnv($path) {
     }
 }
 
-// Load the .env file from the root directory
-loadEnv(__DIR__ . '/../.env');
+$host = getenv('MYSQLHOST');
+$user = getenv('MYSQLUSER');
+$password = getenv('MYSQLPASSWORD');
+$database = getenv('MYSQLDATABASE');
+$port = getenv('MYSQLPORT');
 
-// 2. Database Connection using Environment Variables (Secure)
-// Note: You should move your DB credentials to your .env file eventually!
-$host = getenv('MYSQLHOST') ?: "localhost";
-$user = getenv('MYSQLUSER') ?: "root";
-$password = getenv('MYSQLPASSWORD') ?: "Suchet1234567";
-$database = getenv('MYSQLDATABASE') ?: "sarkarsetu";
-$port = getenv('MYSQLPORT') ?: "3306";
+// Check if credentials are loaded
+if (!$host || !$user || !$password || !$database) {
+    die("Error: Database environment variables are not set correctly on the server.");
+}
 
-// Include the port in the connection if necessary
 $conn = mysqli_connect($host, $user, $password, $database, $port);
 
 if(!$conn){
