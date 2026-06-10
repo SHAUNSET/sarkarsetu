@@ -14,6 +14,9 @@ function loadEnv($path) {
     }
 }
 
+// Load the .env file from the root directory (assuming this file is inside /includes/)
+loadEnv(__DIR__ . '/../.env');
+
 $host = getenv('MYSQLHOST');
 $user = getenv('MYSQLUSER');
 $password = getenv('MYSQLPASSWORD');
